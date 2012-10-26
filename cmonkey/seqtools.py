@@ -282,8 +282,11 @@ def write_sequences_to_fasta_file(outputfile, seqs):
     """Write a list of sequence tuples to the specified outputfile"""
     for seq in seqs:
         if len(seq[1]) == 0: continue       # do not allow 0 length sequences
-        outputfile.write('>%s\n' % seq[0])
-        outputfile.write('%s\n' % seq[1])
+        try:
+            outputfile.write('>%s\n' % seq[0])
+            outputfile.write('%s\n' % seq[1])
+        except:
+            logger.info('wrongly formatted sequences passed to write_sequences_to_fasta_file!\n%s\n%s' %(seq[0], seq[1]))
 
 
 __all__ = ['subsequence', 'extract_upstream', 'markov_background',

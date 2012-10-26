@@ -1,4 +1,4 @@
 #!/bin/bash
 
-PYTHONPATH=`pwd`/cmonkey python cmonkey/tps.py $@
+PYTHONPATH=`pwd`/cmonkey:$PYTHONPATH python cmonkey/tps.py $@
 

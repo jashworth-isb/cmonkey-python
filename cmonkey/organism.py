@@ -123,7 +123,7 @@ class OrganismBase:
         logging.info("Creating networks...")
         self.__networks = []
         for make_network in network_factories:
-            self.__networks.append(make_network(self))        
+            self.__networks.append(make_network(self))
         logging.info("Finished creating networks.")
 
     def networks(self):
@@ -392,6 +392,8 @@ class GenericOrganism(OrganismBase):
                     # note that we have to return the sequence as a (location, sequence)
                     # pair even if we do not actually use the Location
                     result[gene] = (st.Location(gene, 0, 0, False), self.__seqs[seqtype][gene])
+                    # [ashworth] or not....
+                    result[gene] = self.__seqs[seqtype][gene]
                 else:
                     #logging.warn("Gene '%s' not found in 3' UTRs", gene)
                     pass
